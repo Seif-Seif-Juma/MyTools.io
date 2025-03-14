@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTools.io - Your Shortcut Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MyTools.io</h1>
+            <p>Organize your favorite tools in one place</p>
+        </header>
+
+        <main id="shortcuts-grid">
+            <!-- Shortcuts will be dynamically inserted here -->
+        </main>
+
+        <!-- Floating Action Button (FAB) for adding new shortcuts -->
+        <button id="add-shortcut-fab" class="fab">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- Add/Edit Shortcut Modal -->
+<div id="shortcut-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-tabs">
+            <button class="tab-btn active" data-tab="single">Single Add</button>
+            <button class="tab-btn" data-tab="bulk">Bulk Add</button>
+        </div>
+        
+        <!-- Single Add Form -->
+        <div id="single-form" class="tab-content active">
+            <h2 id="modal-title">Add New Shortcut</h2>
+            <form id="shortcut-form">
+                <input type="text" id="shortcut-name" placeholder="Name" required>
+                <input type="url" id="shortcut-url" placeholder="URL (https://...)" required>
+                <div class="modal-buttons">
+                    <button type="button" id="modal-cancel">Cancel</button>
+                    <button type="submit" id="modal-save">Save</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Bulk Add Form -->
+        <div id="bulk-form" class="tab-content">
+            <h2>Bulk Add Shortcuts</h2>
+            <form id="bulk-shortcut-form">
+                <textarea 
+                    id="bulk-urls" 
+                    placeholder="Paste multiple URLs (one per line)"
+                    rows="8"
+                    required
+                ></textarea>
+                <div id="bulk-preview" class="bulk-preview"></div>
+                <div class="modal-buttons">
+                    <button type="button" id="bulk-modal-cancel">Cancel</button>
+                    <button type="submit" id="bulk-modal-save">
+                        Process URLs
+                        <span class="spinner hidden"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
